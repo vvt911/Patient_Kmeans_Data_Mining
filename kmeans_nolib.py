@@ -5,7 +5,7 @@ import numpy as np
 data = pd.read_csv('patient_dataset_normalization.csv')
 
 # Chọn các đặc trưng để thực hiện phân cụm
-selected_features = ['age', 'chest_pain_type', 'blood_pressure', 'cholesterol',
+selected_features = ['age','chest_pain_type', 'blood_pressure', 'cholesterol',
                      'max_heart_rate', 'exercise_angina', 'plasma_glucose',
                      'insulin', 'bmi', 'diabetes_pedigree', 'hypertension',
                      'heart_disease', 'smoking_status']
