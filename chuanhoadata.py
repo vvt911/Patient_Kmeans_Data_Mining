@@ -33,15 +33,11 @@ data = data[(data['blood_pressure'] >= 90) & (data['blood_pressure'] <= 180)]
 numeric_columns = ['chest_pain_type', 'exercise_angina', 'hypertension', 'heart_disease', 'smoking_status']
 data[numeric_columns].fillna(data[numeric_columns].mode().iloc[0], inplace=True)
 
-# # Chọn các đặc trưng để thực hiện phân cụm
-# columns_name = [
-#     'age', 'chest_pain_type', 'blood_pressure', 'cholesterol', 'max_heart_rate',
-#     'exercise_angina', 'plasma_glucose', 'insulin', 'bmi',
-#     'hypertension', 'heart_disease', 'smoking_status'
-# ]
-
-# # Tạo DataFrame từ dữ liệu và tên cột
-# data = pd.DataFrame(data, columns=columns_name)
+# Chuẩn hóa Min-Max Scaling cho các thuộc tính
+columns_to_scale = ['age', 'blood_pressure', 'cholesterol', 'max_heart_rate', 'plasma_glucose', 
+                    'insulin', 'bmi']
+data[columns_to_scale] = ((data[columns_to_scale] - data[columns_to_scale].min()) / 
+                         (data[columns_to_scale].max() - data[columns_to_scale].min()))
 
 # Lưu dữ liệu đã chuẩn hóa vào một file mới
 data.to_csv("patient_dataset_normalization.csv", index=False)
