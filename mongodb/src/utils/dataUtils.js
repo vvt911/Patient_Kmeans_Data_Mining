@@ -6,12 +6,12 @@ const minMaxScaling = (value, min, max) => {
 const preprocessData = async (data) => {
     const ranges = {
         age: { min: 28, max: 82 },
-        blood_pressure: { min: 90, max: 180 },
-        cholesterol: { min: 120, max: 300 },
-        max_heart_rate: { min: 70, max: 220 },
-        plasma_glucose: { min: 70, max: 250 },
-        insulin: { min: 82, max: 180 },
-        bmi: { min: 10, max: 50 },
+        blood_pressure: { min: 90, max: 165 },
+        cholesterol: { min: 150, max: 294 },
+        max_heart_rate: { min: 138, max: 202 },
+        plasma_glucose: { min: 55, max: 199 },
+        insulin: { min: 81, max: 171 },
+        bmi: { min: 10.3, max: 66.8 },
     };
 
     const preprocessedData = { ...data };
