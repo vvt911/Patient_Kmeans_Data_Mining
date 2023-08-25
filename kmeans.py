@@ -6,19 +6,12 @@ from sklearn.cluster import KMeans
 data = pd.read_csv('patient_dataset_normalization.csv')
 
 # Chọn các đặc trưng để thực hiện phân cụm
-selected_features = ['age', 'chest_pain_type', 'blood_pressure', 'cholesterol',
-                     'max_heart_rate', 'exercise_angina', 'plasma_glucose',
-                     'insulin', 'bmi', 'diabetes_pedigree', 'hypertension',
-                     'heart_disease', 'smoking_status']
-
-features = data[selected_features]
-
 # Số lượng cụm bạn muốn tạo
 num_clusters = 3
 
 # Áp dụng thuật toán KMeans để phân cụm dữ liệu
 kmeans = KMeans(n_clusters=num_clusters, random_state=42)
-data['cluster'] = kmeans.fit_predict(features)
+data['cluster'] = kmeans.fit_predict(data.values)
 
 # In thông tin về số lượng bệnh nhân trong mỗi cụm
 print(data['cluster'].value_counts())

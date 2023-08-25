@@ -19,15 +19,17 @@ initial_centers_idx = np.random.choice(data.shape[0], size=num_clusters, replace
 initial_centers = data[initial_centers_idx]
 
 np.set_printoptions(precision=5, suppress=True)
-print("Ba tâm cụm ban đầu:")
-print(initial_centers)
+print("\nBa tâm cụm ban đầu:")
+for i, initial_center in enumerate(initial_centers):
+    center_str = ', '.join(format(x, '.5f') for x in initial_center)
+    print(f"Cluster center {i}: {center_str}")
 
 # Áp dụng thuật toán KMeans để phân cụm dữ liệu
 max_iters = 100
-tolerance = 1e-4
+tolerance = 1e-10
 centers = initial_centers
 
-for _ in range(max_iters):
+for iteration in range(max_iters):
     # Gán mỗi điểm vào cụm gần nhất
     labels = np.argmin(np.apply_along_axis(lambda x: distance(x, centers), axis=1, arr=data), axis=1)
     
@@ -44,12 +46,32 @@ for _ in range(max_iters):
     if np.linalg.norm(centers - old_centers) < tolerance:
         break
 
-print("Ba tâm cụm cuối cùng:")
-print(centers)
+print("\nSố lần lặp:", iteration + 1)
 
 data = pd.DataFrame(data, columns=columns_name)
-# Gán nhãn cụm cho dữ liệu
 data['cluster'] = labels
 
-# In thông tin về số lượng bệnh nhân trong mỗi cụm
-print(data['cluster'].value_counts())
+
+# Tạo bảng thông tin chi tiết về từng cụm
+cluster_summary = pd.DataFrame()
+cluster_summary['Attribute'] = data.columns.drop('cluster')
+cluster_summary.set_index('Attribute', inplace=True)
+
+# Tính giá trị trung bình của các thuộc tính trong từng cụm
+for i in range(num_clusters):
+    cluster_data = data[data['cluster'] == i].drop(columns=['cluster'])
+    cluster_summary[f'Cluster {i}'] = cluster_data.mean()
+
+# Thêm cột tổng cộng của toàn bộ dữ liệu
+cluster_summary['Full Data'] = data.drop(columns=['cluster']).mean()
+
+# Hiển thị bảng thông tin chi tiết
+print("\nFinal cluster centroids:")
+print(cluster_summary)
+
+
+# Số lượng bệnh nhân trong mỗi cụm
+cluster_counts = data['cluster'].value_counts()
+print("\nSố lượng bệnh nhân trong mỗi cụm:")
+for cluster_id, cluster_count in cluster_counts.iteritems():
+    print(f"Cụm {cluster_id}: {cluster_count} bệnh nhân ({cluster_count / len(data) * 100:.2f}%)")
