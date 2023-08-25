@@ -22,6 +22,6 @@ def save_cluster_centers_to_mongodb(centers, mongodb_uri, database_name):
             data = {field: center['center'][idx] for idx, field in enumerate(fields)}
             data['cluster'] = center['cluster_id']
             collection.insert_one(data)
-        print("Save centroids successfully.")
+        print("Lưu tâm cụm thành công.")
     except:
-        print("Save centroids error.")
+        print("Lưu tâm cụm thất bại.")

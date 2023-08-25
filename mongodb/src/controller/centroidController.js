@@ -55,6 +55,22 @@ const getCentroidsNearest = async (req, res) => {
     }
 }; 
 
+const getCentroids = async (req, res) => {
+    try {
+        const centroids = await Centroids.find();
 
+        res.status(200).json({
+            status: 'success',
+            data: {
+                centroids: centroids,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: error.message,
+        });
+    }
+};
 
-module.exports = { getCentroidsNearest};
+module.exports = { getCentroidsNearest, getCentroids};
