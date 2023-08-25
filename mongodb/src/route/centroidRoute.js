@@ -1,5 +1,5 @@
 const express = require("express");
-const { createCentroids, getCentroids, getCentroidsNearest } = require("../controller/centroidController");
+const { getCentroidsNearest } = require("../controller/centroidController");
 
 const centroidRouter = express.Router();
 

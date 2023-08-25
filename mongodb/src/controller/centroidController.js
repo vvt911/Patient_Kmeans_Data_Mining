@@ -1,6 +1,4 @@
-const { get } = require('mongoose');
 const { Centroids} = require('../model/centroidModel');
-const { Patients } = require('../model/patientModel');
 const { preprocessData } = require('../utils/dataUtils');
 const { calculateDistance, getClusterFeatures } = require('../utils/centroidUtil');
 
@@ -59,4 +57,4 @@ const getCentroidsNearest = async (req, res) => {
 
 
 
-module.exports = { createCentroids, getCentroidsNearest};
+module.exports = { getCentroidsNearest};
