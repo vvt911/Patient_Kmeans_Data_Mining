@@ -3,7 +3,7 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 
 # Đọc dữ liệu từ file CSV
-data = pd.read_csv("patient_dataset_standardized.csv")
+data = pd.read_csv("patient_dataset_normalization.csv")
 
 # Chọn các cột để sử dụng trong thuật toán KMeans
 # selected_features = ['age', 'chest_pain_type', 'blood_pressure', 'cholesterol', 'max_heart_rate', 'exercise_angina', 'plasma_glucose', 'insulin', 'bmi', 'diabetes_pedigree', 'hypertension', 'heart_disease', 'smoking_status']

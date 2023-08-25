@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv('patient_dataset_standardized.csv')
+data = pd.read_csv('patient_dataset_normalization.csv')
 print(data.info())
 columns_name = data.columns
 data = data.values
