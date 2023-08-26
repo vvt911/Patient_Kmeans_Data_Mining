@@ -1,11 +1,12 @@
 const { Centroids} = require('../model/centroidModel');
+const { Patients } = require('../model/patientModel');
 const { preprocessData } = require('../utils/dataUtils');
 const { calculateDistance, getClusterFeatures } = require('../utils/centroidUtil');
 
 // get all centroids and calculate the distance between each centroid and and patient in req.body
 const getCentroidsNearest = async (req, res) => {
     try {
-        const centroids = await Centroids.find().sort({ age: -1 });
+        const centroids = await Centroids.find();
         const centroidData = centroids.map(centroid => {
             return {
                 age: centroid.age,
