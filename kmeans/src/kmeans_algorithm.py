@@ -37,15 +37,10 @@ def kmeans(num_clusters, data):
     # Lấy tên cột và chuyển đổi data từ pandas => numpy
     columns_name = data.columns
     data = data.values
-    # Khởi tạo các trung tâm cụm ban đầu ngẫu nhiên
+    # Khởi tạo các tâm cụm ban đầu ngẫu nhiên
     np.random.seed(42)
     initial_centers_idx = np.random.choice(data.shape[0], size=num_clusters, replace=False)
     initial_centers = data[initial_centers_idx]
-
-    # Áp dụng thuật toán KMeans để phân cụm dữ liệu
-    max_iters = 100
-    tolerance = 1e-10
-    centers = initial_centers
 
     np.set_printoptions(precision=5, suppress=True)
     print("===========================================================")
@@ -54,9 +49,14 @@ def kmeans(num_clusters, data):
         center_str = ', '.join(format(x, '.5f') for x in initial_center)
         print(f"Cluster center {i}: {center_str}")
 
+    # Áp dụng thuật toán KMeans để phân cụm dữ liệu
+    max_iters = 100
+    tolerance = 1e-10
+    centers = initial_centers
     for iteration in range(max_iters):
         # Gán mỗi điểm vào cụm gần nhất
-        labels = np.argmin(np.apply_along_axis(lambda x: distance(x, centers), axis=1, arr=data), axis=1)
+        labels = np.argmin(np.apply_along_axis(
+            lambda x: distance(x, centers), axis=1, arr=data), axis=1)
         
         # Lưu trữ trung tâm cũ để so sánh sau
         old_centers = centers.copy()
