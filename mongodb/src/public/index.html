@@ -74,7 +74,7 @@
                     <div style="width: 49%;">
                         <div class="item-form-patient form-group">
                             <label for="age">Age:</label>
-                            <input class="form-control" type="number" id="age" name="age" min="18" max="90" required>
+                            <input class="form-control" type="number" id="age" name="age" min="28" max="82" required>
                         </div>
         
                         <div class="item-form-patient form-group">
@@ -85,17 +85,17 @@
                 
                         <div class="item-form-patient form-group">
                             <label for="blood_pressure">Blood Pressure:</label>
-                            <input class="form-control" type="number" id="blood_pressure" name="blood_pressure" min="90" max="180" required>
+                            <input class="form-control" type="number" id="blood_pressure" name="blood_pressure" min="90" max="165" required>
                         </div>
         
                         <div class="item-form-patient form-group">
                             <label for="cholesterol">Cholesterol:</label>
-                            <input class="form-control" type="number" id="cholesterol" name="cholesterol" min="120" max="300" required>
+                            <input class="form-control" type="number" id="cholesterol" name="cholesterol" min="150" max="294" required>
                         </div>
                 
                         <div class="item-form-patient form-group">
                             <label for="max_heart_rate">Max Heart Rate:</label>
-                            <input class="form-control" type="number" id="max_heart_rate" name="max_heart_rate" min="70" max="220" required>
+                            <input class="form-control" type="number" id="max_heart_rate" name="max_heart_rate" min="138" max="202" required>
                         </div>
                 
                         <div class="item-form-patient form-group">
@@ -110,25 +110,18 @@
                     <div style="width: 49%;">
                         <div class="item-form-patient form-group">
                             <label for="plasma_glucose">Plasma Glucose:</label>
-                            <input class="form-control" type="number" id="plasma_glucose" name="plasma_glucose" min="70" max="250" required>
+                            <input class="form-control" type="number" id="plasma_glucose" name="plasma_glucose" min="55" max="199" required>
                         </div>
         
                         <div class="item-form-patient form-group">
                             <label for="insulin">Insulin:</label>
-                            <input class="form-control" type="number" id="insulin" name="insulin" min="80" max="190" required>
+                            <input class="form-control" type="number" id="insulin" name="insulin" min="81" max="171" required>
                         </div>
         
                         <div class="item-form-patient form-group">
                             <label for="bmi">BMI:</label>
-                            <input class="form-control" type="number" id="bmi" name="bmi" min="10" max="50" step="0.1" required>
-                        </div>
-        
-                
-                        <div class="item-form-patient form-group">
-                            <label for="diabetes_pedigree">Diabetes Pedigree:</label>
-                            <input class="form-control" type="number" id="diabetes_pedigree" name="diabetes_pedigree" min="0.1" max="2.5" step="0.1" required>
-                        </div>
-        
+                            <input class="form-control" type="number" id="bmi" name="bmi" min="10.3" max="66.8" step="0.1" required>
+                        </div>        
                 
                         <div class="item-form-patient form-group">
                             <label for="hypertension">Hypertension:</label>
@@ -137,7 +130,6 @@
                                 <option value="1">Yes</option>
                             </select>
                         </div>
-        
                 
                         <div class="item-form-patient form-group">
                             <label for="heart_disease">Heart Disease:</label>
@@ -146,15 +138,17 @@
                                 <option value="1">Yes</option>
                             </select>
                         </div>
+
+                        <div class="item-form-patient form-group">
+                            <label for="smoking_status">Smoking Status:</label>
+                            <select class="form-control" id="smoking_status" name="smoking_status" required>
+                                <option value="smokes">Smokes</option>
+                                <option value="formerly smoked">Formerly smoked</option>
+                                <option value="never smoked">Never smoked</option>
+                                <option value="Unknown">Unknown</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-        
-                <div class="item-form-patient form-group">
-                    <label for="smoking_status">Smoking Status:</label>
-                    <select class="form-control" id="smoking_status" name="smoking_status" required>
-                        <option value="Smoker">Smoker</option>
-                        <option value="Non-Smoker">Non-Smoker</option>
-                    </select>
                 </div>
         
                 <div class="w-100 text-center">

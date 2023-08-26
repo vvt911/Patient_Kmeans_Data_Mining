@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("show-centroids").addEventListener("click", async function (event) {
       try {
           // Send GET request to API
-          const response = await fetch("http://127.0.0.1:3000/api/centroid-all", {
+          const response = await fetch("http://127.0.0.1:3000/api/centroids", {
               method: "GET",
               headers: {
                   "Content-Type": "application/json",

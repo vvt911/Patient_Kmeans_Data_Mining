@@ -4,6 +4,6 @@ const { getCentroidsNearest, getCentroids } = require("../controller/centroidCon
 const centroidRouter = express.Router();
 
 centroidRouter.post("/centroid-predict", getCentroidsNearest);
-centroidRouter.get("/centroid-all", getCentroids);
+centroidRouter.get("/centroids", getCentroids);
 
 module.exports = centroidRouter;
