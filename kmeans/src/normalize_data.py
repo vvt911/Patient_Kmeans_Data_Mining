@@ -14,15 +14,8 @@ columns_to_drop = ['gender', 'skin_thickness', 'residence_type', 'diabetes_pedig
 data = data.drop(columns=columns_to_drop)
 
 # Sử dụng LabelEncoder cho cột 'smoking_status'
-label_mapping = {
-    'never smoked': 0,
-    'formerly smoked': 1,
-    'Unknown': 2,
-    'smokes': 3
-}
-
 label_encoder = LabelEncoder()
-data['smoking_status'] = data['smoking_status'].map(label_mapping)
+data['smoking_status'] = label_encoder.fit_transform(data['smoking_status'])
 
 # Chỉ định danh sách các cột cần điền giá trị thiếu
 numeric_columns_float = ['plasma_glucose', 'bmi']
@@ -34,8 +27,8 @@ numeric_columns_int = [
 ]
 data[numeric_columns_int] = data[numeric_columns_int].fillna(data[numeric_columns_int].mean().round())
 
-# Loại bỏ các bản ghi có blood_pressure nhỏ hơn 60 hoặc lớn hơn 180
-data = data[(data['blood_pressure'] >= 60) & (data['blood_pressure'] <= 180)]
+# Loại bỏ các bản ghi có blood_pressure nhỏ hơn 90 hoặc lớn hơn 180
+data = data[(data['blood_pressure'] >= 90) & (data['blood_pressure'] <= 180)]
 
 numeric_columns = ['chest_pain_type', 'exercise_angina', 'hypertension', 'heart_disease', 'smoking_status']
 data[numeric_columns].fillna(data[numeric_columns].mode().iloc[0], inplace=True)
