@@ -13,6 +13,7 @@ const centroidSchema = new mongoose.Schema({
     hypertension: Number,
     heart_disease: Number,
     smoking_status: Number,
+    cluster: Number
 });
 
 const Centroids = mongoose.model("Centroids", centroidSchema);

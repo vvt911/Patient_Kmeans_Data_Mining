@@ -18,23 +18,23 @@ const calculateDistance = async (point1, point2) => {
 };
 
 const getClusterFeatures = async (centroid, centroidData) => {
-    if (centroid === centroidData[0]) {
+    if (centroid.cluster == 0) {
         return {
-            name: "Old Person",
-            features: "Tuổi trung bình cao, huyết áp thấp, nhịp tim cao, nguy cơ tiểu đường thấp.",
+            name: "Cluster 0",
+            features: "Bệnh nhân có sức khỏe ổn định",
+            color_text: "text-success"
+        };
+    } else if (centroid.cluster == 1) {
+        return {
+            name: "Cluster 1",
+            features: "Bệnh nhân có nguy cơ rất lớn mắc các bệnh về tim mạch",
             color_text: "text-danger"
         };
-    } else if (centroid === centroidData[1]) {
+    } else if (centroid.cluster == 2) {
         return {
-            name: "Middle Age",
-            features: "Tuổi trung bình, nhịp tim trung bình, huyết áp tăng, nguy cơ tiểu đường cao.",
+            name: "Cluster 2",
+            features: "Bệnh nhân có nguy cơ mắc các bệnh về tim mạch",
             color_text: "text-warning"
-        };
-    } else if (centroid === centroidData[2]) {
-        return {
-            name: "Young",
-            features: "Tuổi trung bình thấp, nhịp tim cao, nguy cơ huyết áp cao thấp, nguy cơ bệnh tim thấp.",
-            color_text: "text-success"
         };
     }
 };

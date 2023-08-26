@@ -20,7 +20,8 @@ const getCentroidsNearest = async (req, res) => {
                 bmi: centroid.bmi,
                 hypertension: centroid.hypertension,
                 heart_disease: centroid.heart_disease,
-                smoking_status: centroid.smoking_status
+                smoking_status: centroid.smoking_status,
+                cluster: centroid.cluster
             };
         });
         const patient = req.body;

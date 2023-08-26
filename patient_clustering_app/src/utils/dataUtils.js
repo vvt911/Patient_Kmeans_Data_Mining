@@ -27,9 +27,9 @@ const preprocessData = async (data) => {
     }
 
     if (preprocessedData.smoking_status === "Unknown") {
-        preprocessedData.smoking_status = 0;
-    } else if (preprocessedData.smoking_status === "never smoked") {
         preprocessedData.smoking_status = 2;
+    } else if (preprocessedData.smoking_status === "never smoked") {
+        preprocessedData.smoking_status = 0;
     } else if (preprocessedData.smoking_status === "formerly smoked") {
         preprocessedData.smoking_status = 1;
     }   else if (preprocessedData.smoking_status === "smokes") {
