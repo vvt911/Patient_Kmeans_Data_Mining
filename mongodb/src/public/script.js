@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
             plasma_glucose: parseInt(form.plasma_glucose.value),
             insulin: parseInt(form.insulin.value),
             bmi: parseFloat(form.bmi.value),
-            diabetes_pedigree: parseFloat(form.diabetes_pedigree.value),
             hypertension: parseInt(form.hypertension.value),
             heart_disease: parseInt(form.heart_disease.value),
             smoking_status: form.smoking_status.value,
