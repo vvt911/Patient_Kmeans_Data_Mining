@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 label_encoder = LabelEncoder()
 
 # Đọc dữ liệu từ file CSV
-data = pd.read_csv('patient_priority.csv')
+data = pd.read_csv('patient_raw.csv')
 print(data.info())
 
 # Xóa các cột 'gender', 'skin_thickness' và 'residence_type', 'diabetes_pedigree'
@@ -14,8 +14,14 @@ columns_to_drop = ['gender', 'skin_thickness', 'residence_type', 'diabetes_pedig
 data = data.drop(columns=columns_to_drop)
 
 # Sử dụng LabelEncoder cho cột 'smoking_status'
+label_mapping = {
+    'never smoked': 0,
+    'formerly smoked': 1,
+    'Unknown': 2,
+    'smokes': 3
+}
 label_encoder = LabelEncoder()
-data['smoking_status'] = label_encoder.fit_transform(data['smoking_status'])
+data['smoking_status'] = data['smoking_status'].map(label_mapping)
 
 # Chỉ định danh sách các cột cần điền giá trị thiếu
 numeric_columns_float = ['plasma_glucose', 'bmi']
@@ -40,6 +46,6 @@ data[columns_to_scale] = ((data[columns_to_scale] - data[columns_to_scale].min()
                          (data[columns_to_scale].max() - data[columns_to_scale].min()))
 
 # Lưu dữ liệu đã chuẩn hóa vào một file mới
-data.to_csv("patient_dataset_normalization.csv", index=False)
+data.to_csv("patient_normalization.csv", index=False)
 print(data.info())
-print("Dữ liệu đã chuẩn hóa đã được lưu vào file 'patient_dataset_normalization.csv'")
+print("Dữ liệu đã chuẩn hóa đã được lưu vào file 'patient_normalization.csv'")
