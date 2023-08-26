@@ -23,14 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
               // Set màu cho các cluster
               const color_column = [
                 {
-                    backgroundColor: 'rgba(255, 26, 104, 0.2)',
-                    borderColor: 'rgba(255, 26, 104, 1)',
+                  backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
                 },
                 {
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                },{
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    backgroundColor: 'rgb(247,86,86,0.8)',
+                    borderColor: 'rgba(247,86,86, 1)',
+                },
+                {
+                    backgroundColor: 'rgba(255, 206, 86, 0.8)',
                     borderColor: 'rgba(255, 206, 86, 1)',
                 }
               ];
