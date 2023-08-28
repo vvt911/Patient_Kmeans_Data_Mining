@@ -24,10 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         try {
-            // Convert form data to JSON
             const jsonData = JSON.stringify(formData);
 
-            // Send POST request to API
             const response = await fetch("http://127.0.0.1:3000/api/centroid-predict", {
                 method: "POST",
                 headers: {
@@ -38,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.ok) {
                 const predictionResult = await response.json();
-                resultParagraph.textContent  = `${predictionResult.data.clusteredFetures.name}: ${predictionResult.data.clusteredFetures.features}`
+                resultParagraph.textContent  = `${predictionResult.data.clusteredFeatures.name}: ${predictionResult.data.clusteredFeatures.features}`
                 resultBox.classList.remove(...resultBox.classList);
-                resultBox.classList.add(`${predictionResult.data.clusteredFetures.color_text}`);
+                resultBox.classList.add(`${predictionResult.data.clusteredFeatures.color_text}`);
             } else {
                 resultParagraph.textContent = "Prediction failed.";
             }

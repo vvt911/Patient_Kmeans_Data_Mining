@@ -16,6 +16,7 @@ if __name__ == "__main__":
         data = pd.DataFrame(data_from_mongodb)
         data = data.drop(columns=['_id'])
         print(data.info())
+        
         # Số lượng cụm bạn muốn tạo
         num_clusters = 3
         centers = kmeans(num_clusters, data)

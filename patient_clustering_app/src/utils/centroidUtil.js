@@ -17,7 +17,7 @@ const calculateDistance = async (point1, point2) => {
     return distance;
 };
 
-const getClusterFeatures = async (centroid, centroidData) => {
+const getClusterFeatures = async (centroid) => {
     if (centroid.cluster == 0) {
         return {
             name: "Cluster 0",

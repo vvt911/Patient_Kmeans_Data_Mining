@@ -3,7 +3,6 @@ const { Patients } = require('../model/patientModel');
 const { preprocessData } = require('../utils/dataUtils');
 const { calculateDistance, getClusterFeatures } = require('../utils/centroidUtil');
 
-// get all centroids and calculate the distance between each centroid and and patient in req.body
 const getCentroidsNearest = async (req, res) => {
     try {
         const centroids = await Centroids.find();
@@ -38,7 +37,7 @@ const getCentroidsNearest = async (req, res) => {
             }
         }
         
-        const clusteredFetures = await getClusterFeatures(centroidNearest, centroidData);
+        const clusteredFeatures = await getClusterFeatures(centroidNearest);
         const result = await patientProcessed.save();
 
         res.status(200).json({
@@ -46,7 +45,7 @@ const getCentroidsNearest = async (req, res) => {
             data: {
                 patient: result,
                 centroid: centroidNearest,
-                clusteredFetures: clusteredFetures,
+                clusteredFeatures: clusteredFeatures,
             },
         });
     } catch (error) {
