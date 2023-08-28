@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let chartVisible = false;
+    let newChart = null;
 
     document.getElementById("show-centroids").addEventListener("click", async function (event) {
+        if (chartVisible) {
+            document.getElementsByClassName('chartCard')[0].classList.add("d-none");
+            if (newChart) {
+                newChart.destroy();
+                newChart = null;
+            }
+            chartVisible = false;
+            return;
+        }
         try {
             const response = await fetch("http://127.0.0.1:3000/api/centroids", {
                 method: "GET",
@@ -78,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
 
                 // Tạo biểu đồ mới
-                const newChart = new Chart(
+                newChart = new Chart(
                     document.getElementById('myChart'),
                     {
                         type: 'bar',
@@ -86,11 +97,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 );
                 document.getElementsByClassName('chartCard')[0].classList.remove("d-none");;
+                chartVisible = true;
             } else {
-                console.log("Error");
+                console.log("Error: ", error);
             }
         } catch (error) {
-            console.log("Error");
+            console.log("Error: ", error);
         }
     });
 });
