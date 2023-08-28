@@ -11,7 +11,7 @@ X = data.values
 max_clusters = 10
 wcss = []
 for num_clusters in range(1, max_clusters + 1):
-    kmeans = KMeans(n_clusters=num_clusters, n_init=10)
+    kmeans = KMeans(n_clusters=num_clusters)
     kmeans.fit(X)
     wcss.append(kmeans.inertia_)
 
