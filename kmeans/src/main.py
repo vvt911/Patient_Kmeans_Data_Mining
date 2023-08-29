@@ -15,7 +15,7 @@ if __name__ == "__main__":
         data_from_mongodb = list(collection.find())
         data = pd.DataFrame(data_from_mongodb)
         data = data.drop(columns=['_id'])
-        print(data.info())
+        data.info()
         
         # Số lượng cụm bạn muốn tạo
         num_clusters = 3

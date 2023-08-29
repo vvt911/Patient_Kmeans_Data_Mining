@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from mongodb_connector import connect_to_mongodb, save_cluster_centers_to_mongodb
 
 # Hàm tính khoảng cách giữa các điểm và trung tâm cụm
 def distance(x, centers):
@@ -42,7 +41,6 @@ def kmeans(num_clusters, data):
     initial_centers_idx = np.random.choice(data.shape[0], size=num_clusters, replace=False)
     initial_centers = data[initial_centers_idx]
 
-    np.set_printoptions(precision=5, suppress=True)
     print("===========================================================")
     print("Ba tâm cụm ban đầu:")
     for i, initial_center in enumerate(initial_centers):
@@ -54,15 +52,18 @@ def kmeans(num_clusters, data):
     tolerance = 1e-10
     centers = initial_centers
     for iteration in range(max_iters):
-        # Gán mỗi điểm vào cụm gần nhất
-        labels = np.argmin(np.apply_along_axis(
-            lambda x: distance(x, centers), axis=1, arr=data), axis=1)
+        # Gán nhãn tâm cụm cho từng điểm dữ liệu
+        distance_matrix = np.apply_along_axis(lambda x: distance(x, centers), axis=1, arr=data)
+        labels = np.argmin(distance_matrix, axis=1)
         
         # Lưu trữ trung tâm cũ để so sánh sau
         old_centers = centers.copy()
         
         # Cập nhật trung tâm cụm
         for i in range(num_clusters):
+            # print(labels)
+            # print(i)
+            # print(labels == i)
             cluster_points = data[labels == i]
             if len(cluster_points) > 0:
                 centers[i] = np.mean(cluster_points, axis=0)
