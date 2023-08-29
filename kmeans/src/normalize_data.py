@@ -1,10 +1,8 @@
 import pandas as pd
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
 
 # Đọc dữ liệu từ file CSV
 data = pd.read_csv('patient_raw.csv')
-print(data.info())
+data.info()
 
 # Xóa các cột 'gender', 'skin_thickness' và 'residence_type', 'diabetes_pedigree'
 columns_to_drop = ['gender', 'skin_thickness', 'residence_type', 'diabetes_pedigree']
@@ -39,5 +37,5 @@ data[columns_to_scale] = ((data[columns_to_scale] - data[columns_to_scale].min()
 
 # Lưu dữ liệu đã chuẩn hóa vào một file mới
 data.to_csv("patient_normalization.csv", index=False)
-print(data.info())
+data.info()
 print("Dữ liệu đã chuẩn hóa đã được lưu vào file 'patient_normalization.csv'")

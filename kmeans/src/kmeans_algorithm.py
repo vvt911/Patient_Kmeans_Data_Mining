@@ -61,9 +61,6 @@ def kmeans(num_clusters, data):
         
         # Cập nhật trung tâm cụm
         for i in range(num_clusters):
-            # print(labels)
-            # print(i)
-            # print(labels == i)
             cluster_points = data[labels == i]
             if len(cluster_points) > 0:
                 centers[i] = np.mean(cluster_points, axis=0)
