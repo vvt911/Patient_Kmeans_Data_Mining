@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from mongodb_connector import connect_to_mongodb, save_cluster_centers_to_mongodb
 from kmeans_algorithm import kmeans
 
